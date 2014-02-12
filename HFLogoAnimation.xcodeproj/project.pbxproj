@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5B29F95018ABE35300C1D1AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F94F18ABE35300C1D1AE /* Foundation.framework */; };
+		5B29F95218ABE35300C1D1AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F95118ABE35300C1D1AE /* CoreGraphics.framework */; };
+		5B29F95418ABE35300C1D1AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F95318ABE35300C1D1AE /* UIKit.framework */; };
+		5B29F95A18ABE35300C1D1AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B29F95818ABE35300C1D1AE /* InfoPlist.strings */; };
+		5B29F95C18ABE35300C1D1AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F95B18ABE35300C1D1AE /* main.m */; };
+		5B29F96018ABE35300C1D1AE /* HFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F95F18ABE35300C1D1AE /* HFAppDelegate.m */; };
+		5B29F96318ABE35300C1D1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B29F96118ABE35300C1D1AE /* Main.storyboard */; };
+		5B29F96618ABE35300C1D1AE /* HFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F96518ABE35300C1D1AE /* HFViewController.m */; };
+		5B29F96818ABE35300C1D1AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B29F96718ABE35300C1D1AE /* Images.xcassets */; };
+		5B29F96F18ABE35300C1D1AE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F96E18ABE35300C1D1AE /* XCTest.framework */; };
+		5B29F97018ABE35300C1D1AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F94F18ABE35300C1D1AE /* Foundation.framework */; };
+		5B29F97118ABE35300C1D1AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F95318ABE35300C1D1AE /* UIKit.framework */; };
+		5B29F97918ABE35300C1D1AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B29F97718ABE35300C1D1AE /* InfoPlist.strings */; };
+		5B29F97B18ABE35300C1D1AE /* HFLogoAnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F97A18ABE35300C1D1AE /* HFLogoAnimationTests.m */; };
+		5B29F98618ABE42D00C1D1AE /* HFTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5B29F97218ABE35300C1D1AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5B29F94418ABE35300C1D1AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5B29F94B18ABE35300C1D1AE;
+			remoteInfo = HFLogoAnimation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5B29F94C18ABE35300C1D1AE /* HFLogoAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HFLogoAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B29F94F18ABE35300C1D1AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5B29F95118ABE35300C1D1AE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5B29F95318ABE35300C1D1AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5B29F95718ABE35300C1D1AE /* HFLogoAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HFLogoAnimation-Info.plist"; sourceTree = "<group>"; };
+		5B29F95918ABE35300C1D1AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B29F95B18ABE35300C1D1AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5B29F95D18ABE35300C1D1AE /* HFLogoAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HFLogoAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		5B29F95E18ABE35300C1D1AE /* HFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFAppDelegate.h; sourceTree = "<group>"; };
+		5B29F95F18ABE35300C1D1AE /* HFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFAppDelegate.m; sourceTree = "<group>"; };
+		5B29F96218ABE35300C1D1AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B29F96418ABE35300C1D1AE /* HFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HFViewController.h; sourceTree = "<group>"; };
+		5B29F96518ABE35300C1D1AE /* HFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFViewController.m; sourceTree = "<group>"; };
+		5B29F96718ABE35300C1D1AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5B29F96D18ABE35300C1D1AE /* HFLogoAnimationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HFLogoAnimationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B29F96E18ABE35300C1D1AE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		5B29F97618ABE35300C1D1AE /* HFLogoAnimationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HFLogoAnimationTests-Info.plist"; sourceTree = "<group>"; };
+		5B29F97818ABE35300C1D1AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5B29F97A18ABE35300C1D1AE /* HFLogoAnimationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFLogoAnimationTests.m; sourceTree = "<group>"; };
+		5B29F98418ABE42D00C1D1AE /* HFTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextLayer.h; sourceTree = "<group>"; };
+		5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextLayer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5B29F94918ABE35300C1D1AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F95218ABE35300C1D1AE /* CoreGraphics.framework in Frameworks */,
+				5B29F95418ABE35300C1D1AE /* UIKit.framework in Frameworks */,
+				5B29F95018ABE35300C1D1AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B29F96A18ABE35300C1D1AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F96F18ABE35300C1D1AE /* XCTest.framework in Frameworks */,
+				5B29F97118ABE35300C1D1AE /* UIKit.framework in Frameworks */,
+				5B29F97018ABE35300C1D1AE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5B29F94318ABE35300C1D1AE = {
+			isa = PBXGroup;
+			children = (
+				5B29F95518ABE35300C1D1AE /* HFLogoAnimation */,
+				5B29F97418ABE35300C1D1AE /* HFLogoAnimationTests */,
+				5B29F94E18ABE35300C1D1AE /* Frameworks */,
+				5B29F94D18ABE35300C1D1AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5B29F94D18ABE35300C1D1AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F94C18ABE35300C1D1AE /* HFLogoAnimation.app */,
+				5B29F96D18ABE35300C1D1AE /* HFLogoAnimationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5B29F94E18ABE35300C1D1AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F94F18ABE35300C1D1AE /* Foundation.framework */,
+				5B29F95118ABE35300C1D1AE /* CoreGraphics.framework */,
+				5B29F95318ABE35300C1D1AE /* UIKit.framework */,
+				5B29F96E18ABE35300C1D1AE /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B29F95518ABE35300C1D1AE /* HFLogoAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F98418ABE42D00C1D1AE /* HFTextLayer.h */,
+				5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */,
+				5B29F95E18ABE35300C1D1AE /* HFAppDelegate.h */,
+				5B29F95F18ABE35300C1D1AE /* HFAppDelegate.m */,
+				5B29F96118ABE35300C1D1AE /* Main.storyboard */,
+				5B29F96418ABE35300C1D1AE /* HFViewController.h */,
+				5B29F96518ABE35300C1D1AE /* HFViewController.m */,
+				5B29F96718ABE35300C1D1AE /* Images.xcassets */,
+				5B29F95618ABE35300C1D1AE /* Supporting Files */,
+			);
+			path = HFLogoAnimation;
+			sourceTree = "<group>";
+		};
+		5B29F95618ABE35300C1D1AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F95718ABE35300C1D1AE /* HFLogoAnimation-Info.plist */,
+				5B29F95818ABE35300C1D1AE /* InfoPlist.strings */,
+				5B29F95B18ABE35300C1D1AE /* main.m */,
+				5B29F95D18ABE35300C1D1AE /* HFLogoAnimation-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5B29F97418ABE35300C1D1AE /* HFLogoAnimationTests */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F97A18ABE35300C1D1AE /* HFLogoAnimationTests.m */,
+				5B29F97518ABE35300C1D1AE /* Supporting Files */,
+			);
+			path = HFLogoAnimationTests;
+			sourceTree = "<group>";
+		};
+		5B29F97518ABE35300C1D1AE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B29F97618ABE35300C1D1AE /* HFLogoAnimationTests-Info.plist */,
+				5B29F97718ABE35300C1D1AE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5B29F94B18ABE35300C1D1AE /* HFLogoAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B29F97E18ABE35300C1D1AE /* Build configuration list for PBXNativeTarget "HFLogoAnimation" */;
+			buildPhases = (
+				5B29F94818ABE35300C1D1AE /* Sources */,
+				5B29F94918ABE35300C1D1AE /* Frameworks */,
+				5B29F94A18ABE35300C1D1AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HFLogoAnimation;
+			productName = HFLogoAnimation;
+			productReference = 5B29F94C18ABE35300C1D1AE /* HFLogoAnimation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5B29F96C18ABE35300C1D1AE /* HFLogoAnimationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B29F98118ABE35300C1D1AE /* Build configuration list for PBXNativeTarget "HFLogoAnimationTests" */;
+			buildPhases = (
+				5B29F96918ABE35300C1D1AE /* Sources */,
+				5B29F96A18ABE35300C1D1AE /* Frameworks */,
+				5B29F96B18ABE35300C1D1AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B29F97318ABE35300C1D1AE /* PBXTargetDependency */,
+			);
+			name = HFLogoAnimationTests;
+			productName = HFLogoAnimationTests;
+			productReference = 5B29F96D18ABE35300C1D1AE /* HFLogoAnimationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5B29F94418ABE35300C1D1AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HF;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = HardFlip;
+				TargetAttributes = {
+					5B29F96C18ABE35300C1D1AE = {
+						TestTargetID = 5B29F94B18ABE35300C1D1AE;
+					};
+				};
+			};
+			buildConfigurationList = 5B29F94718ABE35300C1D1AE /* Build configuration list for PBXProject "HFLogoAnimation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5B29F94318ABE35300C1D1AE;
+			productRefGroup = 5B29F94D18ABE35300C1D1AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5B29F94B18ABE35300C1D1AE /* HFLogoAnimation */,
+				5B29F96C18ABE35300C1D1AE /* HFLogoAnimationTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5B29F94A18ABE35300C1D1AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F96818ABE35300C1D1AE /* Images.xcassets in Resources */,
+				5B29F95A18ABE35300C1D1AE /* InfoPlist.strings in Resources */,
+				5B29F96318ABE35300C1D1AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B29F96B18ABE35300C1D1AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F97918ABE35300C1D1AE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5B29F94818ABE35300C1D1AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F98618ABE42D00C1D1AE /* HFTextLayer.m in Sources */,
+				5B29F96618ABE35300C1D1AE /* HFViewController.m in Sources */,
+				5B29F96018ABE35300C1D1AE /* HFAppDelegate.m in Sources */,
+				5B29F95C18ABE35300C1D1AE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B29F96918ABE35300C1D1AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B29F97B18ABE35300C1D1AE /* HFLogoAnimationTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5B29F97318ABE35300C1D1AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5B29F94B18ABE35300C1D1AE /* HFLogoAnimation */;
+			targetProxy = 5B29F97218ABE35300C1D1AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5B29F95818ABE35300C1D1AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B29F95918ABE35300C1D1AE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5B29F96118ABE35300C1D1AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B29F96218ABE35300C1D1AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5B29F97718ABE35300C1D1AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5B29F97818ABE35300C1D1AE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5B29F97C18ABE35300C1D1AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5B29F97D18ABE35300C1D1AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5B29F97F18ABE35300C1D1AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HFLogoAnimation/HFLogoAnimation-Prefix.pch";
+				INFOPLIST_FILE = "HFLogoAnimation/HFLogoAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5B29F98018ABE35300C1D1AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HFLogoAnimation/HFLogoAnimation-Prefix.pch";
+				INFOPLIST_FILE = "HFLogoAnimation/HFLogoAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5B29F98218ABE35300C1D1AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HFLogoAnimation.app/HFLogoAnimation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HFLogoAnimation/HFLogoAnimation-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "HFLogoAnimationTests/HFLogoAnimationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		5B29F98318ABE35300C1D1AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HFLogoAnimation.app/HFLogoAnimation";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HFLogoAnimation/HFLogoAnimation-Prefix.pch";
+				INFOPLIST_FILE = "HFLogoAnimationTests/HFLogoAnimationTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5B29F94718ABE35300C1D1AE /* Build configuration list for PBXProject "HFLogoAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B29F97C18ABE35300C1D1AE /* Debug */,
+				5B29F97D18ABE35300C1D1AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5B29F97E18ABE35300C1D1AE /* Build configuration list for PBXNativeTarget "HFLogoAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B29F97F18ABE35300C1D1AE /* Debug */,
+				5B29F98018ABE35300C1D1AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5B29F98118ABE35300C1D1AE /* Build configuration list for PBXNativeTarget "HFLogoAnimationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B29F98218ABE35300C1D1AE /* Debug */,
+				5B29F98318ABE35300C1D1AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5B29F94418ABE35300C1D1AE /* Project object */;
+}
