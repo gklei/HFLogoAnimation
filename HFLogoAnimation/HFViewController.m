@@ -36,8 +36,7 @@
                                 CGRectGetMidY(self.view.bounds));
    
    self.hLayer.backgroundColor = [UIColor colorWithRed:.9 green:0 blue:.8 alpha:.5].CGColor;
-   
-   
+
    [self.view.layer addSublayer:self.hLayer];
    [self.hLayer setNeedsDisplay];
 }

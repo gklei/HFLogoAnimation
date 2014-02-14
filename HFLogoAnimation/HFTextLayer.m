@@ -8,6 +8,8 @@
 
 #import "HFTextLayer.h"
 
+static const CGFloat kTextFontSize = 50;
+
 @interface HFTextLayer ()
 @property (strong, nonatomic) NSString *letter;
 @property (assign, nonatomic) CGFloat fontSize;
@@ -19,7 +21,7 @@
 {
    HFTextLayer *textLayer = [HFTextLayer layer];
    textLayer.letter = letter;
-   textLayer.fontSize = 50;
+   textLayer.fontSize = kTextFontSize;
    return textLayer;
 }
 
@@ -38,7 +40,6 @@
                                 NSParagraphStyleAttributeName:paragraphStyle};
    
    [self.letter drawInRect:self.bounds withAttributes:attributes];
-   
    UIGraphicsPopContext();
 }
 
