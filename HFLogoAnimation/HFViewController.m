@@ -7,14 +7,16 @@
 //
 
 #import "HFViewController.h"
-#import "HFTextLayer.h"
 
 @interface HFViewController ()
 @property (strong, nonatomic) NSArray *hardFlipLetters;
+@property (strong, nonatomic) CATextLayer *dLayer;
+@property (strong, nonatomic) CATextLayer *pLayer;
 @end
 
 @implementation HFViewController
 
+#pragma mark - Overridden Methods
 - (void)viewDidLoad
 {
    [super viewDidLoad];
@@ -29,26 +31,34 @@
    CGPoint previousPosition = CGPointZero;
    for (NSString *letter in self.hardFlipLetters)
    {
-      CALayer *letterLayer = [HFTextLayer textLayerWithLetter:letter];
-      letterLayer.bounds = CGRectMake(0, 0, 50, 50);
+      CATextLayer *letterLayer = [CATextLayer layer];
+      letterLayer.bounds = CGRectMake(0.0f, 0.0f, 50.0f, 50.0f);
+      letterLayer.string = letter;
+      letterLayer.font = (__bridge CFTypeRef)([UIFont boldSystemFontOfSize:14].fontName);
+      letterLayer.foregroundColor = [UIColor blackColor].CGColor;
+      letterLayer.wrapped = NO;
       letterLayer.position = previousPosition;
       letterLayer.anchorPoint = CGPointZero;
-      letterLayer.name = letter;
+      letterLayer.alignmentMode = @"center";
+
+      [letterContainer addSublayer:letterLayer];
       letterContainer.bounds = CGRectMake(0, 0, CGRectGetWidth(letterContainer.bounds) +
                                           CGRectGetWidth(letterLayer.bounds),
                                           CGRectGetHeight(letterLayer.bounds));
 
-      [letterContainer addSublayer:letterLayer];
-      [letterLayer setNeedsDisplay];
-
       previousPosition = CGPointMake(letterLayer.position.x + CGRectGetWidth(letterLayer.bounds),
                                      letterLayer.position.y);
+
+      if ([letter isEqualToString:@"d"])
+         self.dLayer = letterLayer;
+      else if ([letter isEqualToString:@"p"])
+         self.pLayer = letterLayer;
    }
 
    letterContainer.backgroundColor = [UIColor colorWithRed:1 green:0 blue:.2 alpha:.5].CGColor;
    letterContainer.position = CGPointMake(CGRectGetMidY(self.view.frame),
                                           CGRectGetMidX(self.view.frame));
-   
+
    [self.view.layer addSublayer:letterContainer];
 }
 

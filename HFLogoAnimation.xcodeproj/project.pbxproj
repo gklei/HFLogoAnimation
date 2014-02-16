@@ -21,7 +21,6 @@
 		5B29F97118ABE35300C1D1AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B29F95318ABE35300C1D1AE /* UIKit.framework */; };
 		5B29F97918ABE35300C1D1AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B29F97718ABE35300C1D1AE /* InfoPlist.strings */; };
 		5B29F97B18ABE35300C1D1AE /* HFLogoAnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F97A18ABE35300C1D1AE /* HFLogoAnimationTests.m */; };
-		5B29F98618ABE42D00C1D1AE /* HFTextLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +53,6 @@
 		5B29F97618ABE35300C1D1AE /* HFLogoAnimationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HFLogoAnimationTests-Info.plist"; sourceTree = "<group>"; };
 		5B29F97818ABE35300C1D1AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5B29F97A18ABE35300C1D1AE /* HFLogoAnimationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HFLogoAnimationTests.m; sourceTree = "<group>"; };
-		5B29F98418ABE42D00C1D1AE /* HFTextLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFTextLayer.h; sourceTree = "<group>"; };
-		5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFTextLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +112,6 @@
 		5B29F95518ABE35300C1D1AE /* HFLogoAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				5B29F98418ABE42D00C1D1AE /* HFTextLayer.h */,
-				5B29F98518ABE42D00C1D1AE /* HFTextLayer.m */,
 				5B29F95E18ABE35300C1D1AE /* HFAppDelegate.h */,
 				5B29F95F18ABE35300C1D1AE /* HFAppDelegate.m */,
 				5B29F96118ABE35300C1D1AE /* Main.storyboard */,
@@ -255,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B29F98618ABE42D00C1D1AE /* HFTextLayer.m in Sources */,
 				5B29F96618ABE35300C1D1AE /* HFViewController.m in Sources */,
 				5B29F96018ABE35300C1D1AE /* HFAppDelegate.m in Sources */,
 				5B29F95C18ABE35300C1D1AE /* main.m in Sources */,
@@ -467,6 +461,7 @@
 				5B29F98018ABE35300C1D1AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B29F98118ABE35300C1D1AE /* Build configuration list for PBXNativeTarget "HFLogoAnimationTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +470,7 @@
 				5B29F98318ABE35300C1D1AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
