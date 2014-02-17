@@ -11,7 +11,7 @@
 
 @interface HFViewController ()
 @property (strong, nonatomic) NSArray *hardFlipLetters;
-@property (strong, nonatomic) CALayer *letterContainerLayer;
+@property (strong, nonatomic) CALayer *letterContainer;
 @property (strong, nonatomic) CATextLayer *dLayer;
 @property (strong, nonatomic) CATextLayer *dLayerCopy;
 @property (strong, nonatomic) CATextLayer *pLayer;
@@ -27,12 +27,13 @@
 
    self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"F", @"l", @"i", @"p"];
    [self setupTextLayers];
+//   [self drawPath:[self hardFlipDrawingPath]];
 }
 
 #pragma mark - Helper Methods
 - (void)setupTextLayers
 {
-   self.letterContainerLayer = [CALayer layer];
+   self.letterContainer = [CALayer layer];
    CGPoint previousPosition = CGPointZero;
    for (NSString *letter in self.hardFlipLetters)
    {
@@ -40,12 +41,11 @@
       CATextLayer *letterLayer = [self textLayerWithBounds:CGRectMake(0.0f, 0.0f, 50.0f, 50.0f)
                                                     string:letter];
       letterLayer.position = previousPosition;
-
       previousPosition = CGPointMake(letterLayer.position.x + CGRectGetWidth(letterLayer.bounds),
                                      letterLayer.position.y);
 
-      [self.letterContainerLayer addSublayer:letterLayer];
-      self.letterContainerLayer.bounds = CGRectMake(0, 0, CGRectGetWidth(self.letterContainerLayer.bounds) +
+      [self.letterContainer addSublayer:letterLayer];
+      self.letterContainer.bounds = CGRectMake(0, 0, CGRectGetWidth(self.letterContainer.bounds) +
                                           CGRectGetWidth(letterLayer.bounds),
                                           CGRectGetHeight(letterLayer.bounds));
 
@@ -55,10 +55,10 @@
          self.pLayer = letterLayer;
    }
 
-   self.letterContainerLayer.position = CGPointMake(CGRectGetMidY(self.view.frame) + 25,
+   self.letterContainer.position = CGPointMake(CGRectGetMidY(self.view.frame) + 25,
                                           CGRectGetMidX(self.view.frame) + 25);
 
-   [self.view.layer addSublayer:self.letterContainerLayer];
+   [self.view.layer addSublayer:self.letterContainer];
 }
 
 - (CATextLayer *)textLayerWithBounds:(CGRect)bounds string:(NSString *)string
@@ -77,11 +77,11 @@
 - (UIBezierPath *)hardFlipDrawingPath
 {
    CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
-   CGPoint dLayerPosition = CGPointMake(self.letterContainerLayer.position.x - letterWidth,
-                                        self.letterContainerLayer.position.y - 25);
-   CGPoint pLayerPosition = CGPointMake(self.letterContainerLayer.position.x +
+   CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - letterWidth,
+                                        self.letterContainer.position.y - 25);
+   CGPoint pLayerPosition = CGPointMake(self.letterContainer.position.x +
                                         (CGRectGetWidth(self.dLayer.bounds) * 4 - letterWidth),
-                                        self.letterContainerLayer.position.y - 25);
+                                        self.letterContainer.position.y - 25);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
    CGFloat controlY = pLayerPosition.y - 100;
@@ -96,12 +96,16 @@
 
 - (UIBezierPath *)hardFlipAnimationPath
 {
+   // The magic numbers in here are bad. I still need to figure out what is going on with the
+   // portrait coordinate space, and how to go about converting the position of the dLayer from
+   // it's container to the layer of this view controller's view
+   
    CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
-   CGPoint dLayerPosition = CGPointMake(self.letterContainerLayer.position.x - (letterWidth * .5) - 134,
-                                        self.letterContainerLayer.position.y - 185);
-   CGPoint pLayerPosition = CGPointMake(self.letterContainerLayer.position.x +
+   CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - (letterWidth * .5) - 134,
+                                        self.letterContainer.position.y - 185);
+   CGPoint pLayerPosition = CGPointMake(self.letterContainer.position.x +
                                         (CGRectGetWidth(self.dLayer.bounds) * 4 - (letterWidth * .5)) - 134,
-                                        self.letterContainerLayer.position.y - 185);
+                                        self.letterContainer.position.y - 185);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
    CGFloat controlY = pLayerPosition.y - 100;
@@ -121,11 +125,12 @@
 
    CAShapeLayer *layer = [CAShapeLayer layer];
    layer.path = path.CGPath;
-   layer.strokeColor = [UIColor blackColor].CGColor;
+   layer.strokeColor = [UIColor lightGrayColor].CGColor;
    layer.fillColor = nil;
    layer.lineWidth = 1.0;
 
-   [self.view.layer addSublayer:layer];
+//   [self.view.layer addSublayer:layer];
+   [self.view.layer insertSublayer:layer below:self.letterContainer];
 }
 
 - (CAAnimationGroup *)hardFlipAnimationGroupWithDuration:(CFTimeInterval)duration
@@ -146,7 +151,6 @@
    spin2.duration = duration;
    spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
-   // Create a key frame animation
    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
    scale.values = @[@(1), @(1.5), @(1)];
    scale.duration = duration;
@@ -173,7 +177,6 @@
 #pragma mark - IBActions
 - (IBAction)animate:(id)sender
 {
-   // Do not perform the animation if it is currently happening
    if (self.animating)
       return;
 
@@ -185,7 +188,7 @@
    self.dLayerCopy = [self textLayerWithBounds:CGRectMake(0, 0, 50, 50) string:@"d"];
    self.dLayerCopy.position = self.dLayer.position;
 
-   [self.letterContainerLayer addSublayer:self.dLayerCopy];
+   [self.letterContainer addSublayer:self.dLayerCopy];
    [self.dLayerCopy addAnimation:hardflipAnimation forKey:@"hardflipAnimation"];
 
    [self runFadeInAnimationOnTextLayer:self.dLayer];
