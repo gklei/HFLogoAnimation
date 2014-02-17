@@ -27,7 +27,6 @@
 
    self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"F", @"l", @"i", @"p"];
    [self setupTextLayers];
-//   [self drawPath:[self hardFlipDrawingPath]];
 }
 
 #pragma mark - Helper Methods
@@ -98,7 +97,7 @@
 {
    // The magic numbers in here are bad. I still need to figure out what is going on with the
    // portrait coordinate space, and how to go about converting the position of the dLayer from
-   // it's container to the layer of this view controller's view
+   // it's container to the layer of this view controller's implicit layer
    
    CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
    CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - (letterWidth * .5) - 134,
