@@ -13,7 +13,9 @@
 @property (strong, nonatomic) NSArray *hardFlipLetters;
 @property (strong, nonatomic) CALayer *letterContainerLayer;
 @property (strong, nonatomic) CATextLayer *dLayer;
+@property (strong, nonatomic) CATextLayer *dLayerCopy;
 @property (strong, nonatomic) CATextLayer *pLayer;
+@property (assign, nonatomic) BOOL animating;
 @end
 
 @implementation HFViewController
@@ -22,12 +24,9 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
+
    self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"F", @"l", @"i", @"p"];
    [self setupTextLayers];
-   self.dLayer.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.3].CGColor;
-   self.pLayer.backgroundColor = [UIColor colorWithRed:1 green:1 blue:0 alpha:.3].CGColor;
-
-   [self drawPath:[self hardFlipDrawingPath]];
 }
 
 #pragma mark - Helper Methods
@@ -129,33 +128,68 @@
    [self.view.layer addSublayer:layer];
 }
 
-#pragma mark - IBActions
-- (IBAction)animate:(id)sender
+- (CAAnimationGroup *)hardFlipAnimationGroupWithDuration:(CFTimeInterval)duration
 {
    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
    pathAnimation.calculationMode = kCAAnimationPaced;
-   pathAnimation.fillMode = kCAFillModeForwards;
-   pathAnimation.removedOnCompletion = NO;
-   pathAnimation.duration = 3;
+   pathAnimation.duration = duration;
+   pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
    pathAnimation.path = [self hardFlipAnimationPath].CGPath;
 
-   CABasicAnimation *spin =
-   [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+   CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
    spin.toValue = @(M_PI);
-   spin.duration = 1.0;
-   spin.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-   spin.removedOnCompletion = NO;
+   spin.duration = duration;
+   spin.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+
+   CABasicAnimation *spin2 = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+   spin2.toValue = @(M_PI * 2);
+   spin2.duration = duration;
+   spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
    CAAnimationGroup *group = [CAAnimationGroup animation];
    group.fillMode = kCAFillModeForwards;
-   group.removedOnCompletion = NO;
-   group.animations = @[pathAnimation, spin];
-   group.duration = 3;
+   group.animations = @[pathAnimation, spin, spin2];
+   group.duration = duration;
 
-   [self.dLayer addAnimation:group forKey:@"groupAnimation"];
+   return group;
+}
 
-   CATransform3D current = self.dLayer.transform;
-   self.dLayer.transform = CATransform3DRotate(current, M_PI, 0, 0, 1);
+- (void)runFadeInAnimationOnTextLayer:(CATextLayer *)textLayer
+{
+   CABasicAnimation *fadeIn = [CABasicAnimation animationWithKeyPath:@"opacity"];
+   fadeIn.fromValue = @(-.1);
+   fadeIn.toValue = @(1);
+   fadeIn.duration = 1.5;
+   fadeIn.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+   [textLayer addAnimation:fadeIn forKey:@"fadeIn"];
+}
+
+#pragma mark - IBActions
+- (IBAction)animate:(id)sender
+{
+   // Do not perform the animation if it is currently happening
+   if (self.animating)
+      return;
+
+   self.animating = YES;
+
+   CAAnimationGroup *hardflipAnimation = [self hardFlipAnimationGroupWithDuration:1.5];
+   hardflipAnimation.delegate = self;
+
+   self.dLayerCopy = [self textLayerWithBounds:CGRectMake(0, 0, 50, 50) string:@"d"];
+   self.dLayerCopy.position = self.dLayer.position;
+
+   [self.letterContainerLayer addSublayer:self.dLayerCopy];
+   [self.dLayerCopy addAnimation:hardflipAnimation forKey:@"hardflipAnimation"];
+
+   [self runFadeInAnimationOnTextLayer:self.dLayer];
+}
+
+#pragma mark - Animation Callbacks
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+   [self.dLayerCopy removeFromSuperlayer];
+   self.animating = NO;
 }
 
 @end
