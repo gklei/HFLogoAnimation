@@ -146,9 +146,15 @@
    spin2.duration = duration;
    spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
+   // Create a key frame animation
+   CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+   scale.values = @[@(1), @(1.5), @(1)];
+   scale.duration = duration;
+   scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+
    CAAnimationGroup *group = [CAAnimationGroup animation];
    group.fillMode = kCAFillModeForwards;
-   group.animations = @[pathAnimation, spin, spin2];
+   group.animations = @[pathAnimation, spin, spin2, scale];
    group.duration = duration;
 
    return group;
