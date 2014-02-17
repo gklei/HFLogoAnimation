@@ -98,10 +98,10 @@
 {
    CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
    CGPoint dLayerPosition = CGPointMake(self.letterContainerLayer.position.x - (letterWidth * .5) - 134,
-                                        self.letterContainerLayer.position.y - 184);
+                                        self.letterContainerLayer.position.y - 185);
    CGPoint pLayerPosition = CGPointMake(self.letterContainerLayer.position.x +
                                         (CGRectGetWidth(self.dLayer.bounds) * 4 - (letterWidth * .5)) - 134,
-                                        self.letterContainerLayer.position.y - 184);
+                                        self.letterContainerLayer.position.y - 185);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
    CGFloat controlY = pLayerPosition.y - 100;
