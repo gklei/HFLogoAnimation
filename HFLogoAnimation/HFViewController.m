@@ -54,7 +54,6 @@
          self.pLayer = letterLayer;
    }
 
-   self.letterContainerLayer.backgroundColor = [UIColor colorWithRed:1 green:0 blue:.2 alpha:.5].CGColor;
    self.letterContainerLayer.position = CGPointMake(CGRectGetMidY(self.view.frame),
                                           CGRectGetMidX(self.view.frame));
 
@@ -76,9 +75,14 @@
 #pragma mark - Drawing Methods
 - (void)drawPath
 {
-   CGPoint dLayerPosition = CGPointMake(self.letterContainerLayer.position.x - 25,
+   // Still need to figure out how to work with the desired coordinate space in landscape mode,
+   // and how to utilize the convert to point to/from layer methods that CALayer provides
+
+   CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
+   CGPoint dLayerPosition = CGPointMake(self.letterContainerLayer.position.x - (letterWidth * .5),
                                         self.letterContainerLayer.position.y);
-   CGPoint pLayerPosition = CGPointMake(self.letterContainerLayer.position.x + (CGRectGetWidth(self.dLayer.bounds) * 4 - 25),
+   CGPoint pLayerPosition = CGPointMake(self.letterContainerLayer.position.x +
+                                        (CGRectGetWidth(self.dLayer.bounds) * 4 - (letterWidth * .5)),
                                         self.letterContainerLayer.position.y);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
