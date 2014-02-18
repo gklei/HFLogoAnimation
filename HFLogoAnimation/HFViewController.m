@@ -93,7 +93,7 @@
    return flipArc;
 }
 
-- (UIBezierPath *)hardFlipAnimationPath
+- (UIBezierPath *)hardflipAnimationPath
 {
    // The magic numbers in here are bad. I still need to figure out what is going on with the
    // portrait coordinate space, and how to go about converting the position of the dLayer from
@@ -103,7 +103,8 @@
    CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - (letterWidth * .5) - 134,
                                         self.letterContainer.position.y - 184);
    CGPoint pLayerPosition = CGPointMake(self.letterContainer.position.x +
-                                        (CGRectGetWidth(self.dLayer.bounds) * 4 - (letterWidth * .5)) - 134,
+                                        (CGRectGetWidth(self.dLayer.bounds) * 4 -
+                                        (letterWidth * .5)) - 134,
                                         self.letterContainer.position.y - 184);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
@@ -128,17 +129,16 @@
    layer.fillColor = nil;
    layer.lineWidth = 1.0;
 
-//   [self.view.layer addSublayer:layer];
    [self.view.layer insertSublayer:layer below:self.letterContainer];
 }
 
-- (CAAnimationGroup *)hardFlipAnimationGroupWithDuration:(CFTimeInterval)duration
+- (CAAnimationGroup *)hardflipAnimationGroupWithDuration:(CFTimeInterval)duration
 {
    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
    pathAnimation.calculationMode = kCAAnimationPaced;
    pathAnimation.duration = duration;
    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-   pathAnimation.path = [self hardFlipAnimationPath].CGPath;
+   pathAnimation.path = [self hardflipAnimationPath].CGPath;
 
    CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
    spin.toValue = @(M_PI);
@@ -181,7 +181,7 @@
 
    self.animating = YES;
 
-   CAAnimationGroup *hardflipAnimation = [self hardFlipAnimationGroupWithDuration:1.5];
+   CAAnimationGroup *hardflipAnimation = [self hardflipAnimationGroupWithDuration:1.5];
    hardflipAnimation.delegate = self;
 
    self.dLayerCopy = [self textLayerWithBounds:CGRectMake(0, 0, 50, 50) string:@"d"];
