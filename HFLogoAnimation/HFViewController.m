@@ -176,6 +176,7 @@ static const CGFloat s_arcHeight = 110.f;
    self.animating = YES;
 
    CAAnimationGroup *hardflipAnimation = [self hardflipAnimationGroupWithDuration:1.5];
+   hardflipAnimation.removedOnCompletion = NO;
    hardflipAnimation.delegate = self;
 
    self.dLayerCopy = [self textLayerWithBounds:CGRectMake(0, 0, 50, 50) string:@"d"];
