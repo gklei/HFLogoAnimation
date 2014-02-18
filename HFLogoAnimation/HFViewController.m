@@ -149,6 +149,17 @@ static const CGFloat s_arcHeight = 110.f;
    scale.duration = duration;
    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
+//   CAKeyframeAnimation *shadowOffset = [CAKeyframeAnimation animationWithKeyPath:@"shadowOffset"];
+//   shadowOffset.values = @[[NSValue valueWithCGSize:CGSizeMake(10,10)],
+//                           [NSValue valueWithCGSize:CGSizeMake(20,20)],
+//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
+//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
+//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
+//                           [NSValue valueWithCGSize:CGSizeMake(20,20)],
+//                           [NSValue valueWithCGSize:CGSizeMake(10,10)]];
+//   shadowOffset.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+//   shadowOffset.duration = duration;
+
    CAAnimationGroup *group = [CAAnimationGroup animation];
    group.fillMode = kCAFillModeForwards;
    group.animations = @[pathAnimation, spin, spin2, scale];
@@ -183,8 +194,10 @@ static const CGFloat s_arcHeight = 110.f;
    self.dLayerCopy.position = self.dLayer.position;
 
    [self.letterContainer addSublayer:self.dLayerCopy];
-   [self.dLayerCopy addAnimation:hardflipAnimation forKey:@"hardflipAnimation"];
+//   self.dLayerCopy.shadowOpacity = .5f;
+//   self.dLayerCopy.shadowColor = [UIColor grayColor].CGColor;
 
+   [self.dLayerCopy addAnimation:hardflipAnimation forKey:@"hardflipAnimation"];
    [self runFadeInAnimationOnTextLayer:self.dLayer];
 }
 
