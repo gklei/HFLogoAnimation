@@ -9,6 +9,8 @@
 @import QuartzCore;
 #import "HFViewController.h"
 
+static const CGFloat s_arcHeight = 110.f;
+
 @interface HFViewController ()
 @property (strong, nonatomic) NSArray *hardFlipLetters;
 @property (strong, nonatomic) CALayer *letterContainer;
@@ -29,19 +31,18 @@
 
 - (void)viewDidLayoutSubviews
 {
-   [self setupTextLayers];
-   [self drawPath:[self hardflipDrawingPath]];
+   [self setupTextLayersWithLetterWidth:50.f];
 }
 
 #pragma mark - Helper Methods
-- (void)setupTextLayers
+- (void)setupTextLayersWithLetterWidth:(CGFloat)width
 {
    self.letterContainer = [CALayer layer];
    CGPoint previousPosition = CGPointZero;
    for (NSString *letter in self.hardFlipLetters)
    {
 
-      CATextLayer *letterLayer = [self textLayerWithBounds:CGRectMake(0.0f, 0.0f, 50.0f, 50.0f)
+      CATextLayer *letterLayer = [self textLayerWithBounds:CGRectMake(0.0f, 0.0f, width, width)
                                                     string:letter];
       letterLayer.position = previousPosition;
       previousPosition = CGPointMake(letterLayer.position.x + CGRectGetWidth(letterLayer.bounds),
@@ -77,7 +78,7 @@
 }
 
 #pragma mark - Drawing Methods
-- (UIBezierPath *)hardflipDrawingPath
+- (UIBezierPath *)hardflipDrawingPathWithArcHeight:(CGFloat)arcHeight
 {
    CGPoint dLayerPosition = [self.view.layer convertPoint:self.dLayer.position
                                                 fromLayer:self.letterContainer];
@@ -85,7 +86,7 @@
                                                 fromLayer:self.letterContainer];
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
-   CGFloat controlY = pLayerPosition.y - 100;
+   CGFloat controlY = pLayerPosition.y - arcHeight;
    CGPoint controlPoint = CGPointMake(controlX, controlY);
 
    UIBezierPath *flipArc = [UIBezierPath bezierPath];
@@ -95,22 +96,16 @@
    return flipArc;
 }
 
-- (UIBezierPath *)hardflipAnimationPath
+- (UIBezierPath *)hardflipAnimationPathWithArcHeight:(CGFloat)arcHeight
 {
-   // The magic numbers in here are bad. I still need to figure out what is going on with the
-   // portrait coordinate space, and how to go about converting the position of the dLayer from
-   // it's container to the layer of this view controller's implicit layer
-   
-   CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
-   CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - (letterWidth * .5) - 134,
-                                        self.letterContainer.position.y - 184);
-   CGPoint pLayerPosition = CGPointMake(self.letterContainer.position.x +
-                                        (CGRectGetWidth(self.dLayer.bounds) * 4 -
-                                        (letterWidth * .5)) - 134,
-                                        self.letterContainer.position.y - 184);
+   CGPoint dLayerPosition = [self.view.layer convertPoint:self.dLayer.position toLayer:self.view.layer];
+   CGPoint pLayerPosition = [self.view.layer convertPoint:self.pLayer.position toLayer:self.view.layer];
+
+   // hack to make the animation a little smoother:
+   pLayerPosition = CGPointMake(pLayerPosition.x, pLayerPosition.y + 1);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
-   CGFloat controlY = pLayerPosition.y - 100;
+   CGFloat controlY = pLayerPosition.y - arcHeight;
    CGPoint controlPoint = CGPointMake(controlX, controlY);
 
    UIBezierPath *flipArc = [UIBezierPath bezierPath];
@@ -122,9 +117,6 @@
 
 - (void)drawPath:(UIBezierPath *)path
 {
-   // Still need to figure out how to work with the desired coordinate space in landscape mode,
-   // and how to utilize the convertToPoint to/from layer methods that CALayer provides
-
    CAShapeLayer *layer = [CAShapeLayer layer];
    layer.path = path.CGPath;
    layer.strokeColor = [UIColor lightGrayColor].CGColor;
@@ -140,7 +132,7 @@
    pathAnimation.calculationMode = kCAAnimationPaced;
    pathAnimation.duration = duration;
    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-   pathAnimation.path = [self hardflipAnimationPath].CGPath;
+   pathAnimation.path = [self hardflipAnimationPathWithArcHeight:s_arcHeight].CGPath;
 
    CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
    spin.toValue = @(M_PI);
