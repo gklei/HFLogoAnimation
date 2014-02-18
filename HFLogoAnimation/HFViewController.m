@@ -24,9 +24,13 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-
    self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"F", @"l", @"i", @"p"];
+}
+
+- (void)viewDidLayoutSubviews
+{
    [self setupTextLayers];
+   [self drawPath:[self hardflipDrawingPath]];
 }
 
 #pragma mark - Helper Methods
@@ -54,8 +58,8 @@
          self.pLayer = letterLayer;
    }
 
-   self.letterContainer.position = CGPointMake(CGRectGetMidY(self.view.frame) + 25,
-                                          CGRectGetMidX(self.view.frame) + 25);
+   self.letterContainer.position = CGPointMake(CGRectGetMidX(self.view.bounds) + 25,
+                                               CGRectGetMidY(self.view.bounds) + 25);
 
    [self.view.layer addSublayer:self.letterContainer];
 }
@@ -73,14 +77,12 @@
 }
 
 #pragma mark - Drawing Methods
-- (UIBezierPath *)hardFlipDrawingPath
+- (UIBezierPath *)hardflipDrawingPath
 {
-   CGFloat letterWidth = CGRectGetWidth(self.dLayer.bounds);
-   CGPoint dLayerPosition = CGPointMake(self.letterContainer.position.x - letterWidth,
-                                        self.letterContainer.position.y - 25);
-   CGPoint pLayerPosition = CGPointMake(self.letterContainer.position.x +
-                                        (CGRectGetWidth(self.dLayer.bounds) * 4 - letterWidth),
-                                        self.letterContainer.position.y - 25);
+   CGPoint dLayerPosition = [self.view.layer convertPoint:self.dLayer.position
+                                                fromLayer:self.letterContainer];
+   CGPoint pLayerPosition = [self.view.layer convertPoint:self.pLayer.position
+                                                fromLayer:self.letterContainer];
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
    CGFloat controlY = pLayerPosition.y - 100;
