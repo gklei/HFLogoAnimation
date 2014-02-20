@@ -134,13 +134,13 @@ static const CGFloat s_arcHeight = 110.f;
    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
    pathAnimation.path = [self hardflipAnimationPathWithArcHeight:s_arcHeight].CGPath;
 
-   CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+   CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation.x"];
    spin.toValue = @(M_PI);
    spin.duration = duration;
    spin.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
    CABasicAnimation *spin2 = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-   spin2.toValue = @(M_PI * 2);
+   spin2.toValue = @(M_PI);
    spin2.duration = duration;
    spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
 
