@@ -26,12 +26,13 @@ static const CGFloat s_arcHeight = 110.f;
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-   self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"F", @"l", @"i", @"p"];
+   self.hardFlipLetters = @[@"H", @"a", @"r", @"d", @"f", @"l", @"i", @"p"];
 }
 
 - (void)viewDidLayoutSubviews
 {
    [self setupTextLayersWithLetterWidth:50.f];
+   [self drawPath:[self hardflipDrawingPathWithArcHeight:s_arcHeight]];
 }
 
 #pragma mark - Helper Methods
@@ -102,7 +103,7 @@ static const CGFloat s_arcHeight = 110.f;
    CGPoint pLayerPosition = [self.view.layer convertPoint:self.pLayer.position toLayer:self.view.layer];
 
    // hack to make the animation a little smoother:
-   pLayerPosition = CGPointMake(pLayerPosition.x, pLayerPosition.y + 1);
+   pLayerPosition = CGPointMake(pLayerPosition.x, pLayerPosition.y);
 
    CGFloat controlX = pLayerPosition.x - (dLayerPosition.x * .5);
    CGFloat controlY = pLayerPosition.y - arcHeight;
@@ -119,9 +120,10 @@ static const CGFloat s_arcHeight = 110.f;
 {
    CAShapeLayer *layer = [CAShapeLayer layer];
    layer.path = path.CGPath;
-   layer.strokeColor = [UIColor lightGrayColor].CGColor;
-   layer.fillColor = nil;
-   layer.lineWidth = 1.0;
+   layer.strokeColor = [UIColor darkGrayColor].CGColor;
+   layer.fillColor = [UIColor clearColor].CGColor;
+   layer.lineDashPattern = @[@(5), @(4)];
+   layer.lineWidth = 5.0;
 
    [self.view.layer insertSublayer:layer below:self.letterContainer];
 }
@@ -137,28 +139,17 @@ static const CGFloat s_arcHeight = 110.f;
    CABasicAnimation *spin = [CABasicAnimation animationWithKeyPath:@"transform.rotation.x"];
    spin.toValue = @(M_PI);
    spin.duration = duration;
-   spin.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+   spin.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
 
    CABasicAnimation *spin2 = [CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
-   spin2.toValue = @(M_PI);
+   spin2.toValue = @(-M_PI);
    spin2.duration = duration;
-   spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+   spin2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
 
    CAKeyframeAnimation *scale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
    scale.values = @[@(1), @(1.5), @(1)];
    scale.duration = duration;
    scale.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-
-//   CAKeyframeAnimation *shadowOffset = [CAKeyframeAnimation animationWithKeyPath:@"shadowOffset"];
-//   shadowOffset.values = @[[NSValue valueWithCGSize:CGSizeMake(10,10)],
-//                           [NSValue valueWithCGSize:CGSizeMake(20,20)],
-//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
-//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
-//                           [NSValue valueWithCGSize:CGSizeMake(30,30)],
-//                           [NSValue valueWithCGSize:CGSizeMake(20,20)],
-//                           [NSValue valueWithCGSize:CGSizeMake(10,10)]];
-//   shadowOffset.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-//   shadowOffset.duration = duration;
 
    CAAnimationGroup *group = [CAAnimationGroup animation];
    group.fillMode = kCAFillModeForwards;
@@ -194,9 +185,8 @@ static const CGFloat s_arcHeight = 110.f;
    self.dLayerCopy.position = self.dLayer.position;
 
    [self.letterContainer addSublayer:self.dLayerCopy];
-//   self.dLayerCopy.shadowOpacity = .5f;
-//   self.dLayerCopy.shadowColor = [UIColor grayColor].CGColor;
 
+//   self.dLayerCopy.backgroundColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:.5].CGColor;
    [self.dLayerCopy addAnimation:hardflipAnimation forKey:@"hardflipAnimation"];
    [self runFadeInAnimationOnTextLayer:self.dLayer];
 }
